@@ -1,0 +1,108 @@
+<% layout('/layouts/boilerplate') %>
+
+<div class="container-fluid py-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+
+            <h2 class="mb-4">Edit your listing:</h2>
+
+            <form action="/listings/<%= listing._id %>?_method=PUT"
+                  method="POST"
+                  class="needs-validation"
+                  novalidate enctype="multipart/form-data">
+
+                <!-- Title -->
+                <div class="mb-3">
+                    <label class="form-label">Title</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="listing[title]"
+                        value="<%= listing.title %>"
+                        required
+                    >
+                    <div class="valid-feedback">Looks good</div>
+                    <div class="invalid-feedback">Title is required</div>
+                </div>
+
+                <!-- Description -->
+                <div class="mb-3">
+                    <label class="form-label">Description</label>
+                    <textarea
+                        class="form-control"
+                        name="listing[description]"
+                        rows="4"
+                        required
+                    ><%= listing.description %></textarea>
+
+                    <div class="valid-feedback">Nice description</div>
+                    <div class="invalid-feedback">Description required</div>
+                </div>
+
+                <!-- Image -->
+                <div class="mb-3">
+                    <h3>Original Listing Image:</h3>
+                    <img src="<%= originalImageUrl %>">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Image URL</label>
+                    <input
+                        type="file"
+                        class="form-control"
+                        name="listing[image]"
+                    >
+                </div>
+
+                <!-- Price + Country -->
+                <div class="row mb-3">
+
+                    <div class="col-md-6">
+                        <label class="form-label">Price</label>
+                        <input
+                            type="number"
+                            class="form-control"
+                            name="listing[price]"
+                            value="<%= listing.price %>"
+                            min="1"
+                            required
+                        >
+                        <div class="valid-feedback">Valid price</div>
+                        <div class="invalid-feedback">Price must be greater than 0</div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Country</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="listing[country]"
+                            value="<%= listing.country %>"
+                            required
+                        >
+                        <div class="valid-feedback">Looks good</div>
+                        <div class="invalid-feedback">Country required</div>
+                    </div>
+
+                </div>
+
+                <!-- Location -->
+                <div class="mb-4">
+                    <label class="form-label">Location</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="listing[location]"
+                        value="<%= listing.location %>"
+                        required
+                    >
+                    <div class="valid-feedback">Looks good</div>
+                    <div class="invalid-feedback">Location required</div>
+                </div>
+
+                <button class="btn btn-danger w-100">Update Listing</button>
+
+            </form>
+
+        </div>
+    </div>
+</div>

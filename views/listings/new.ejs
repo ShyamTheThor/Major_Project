@@ -1,0 +1,73 @@
+<% layout('/layouts/boilerplate') %>
+
+<h2 class="mb-4">Create a New Listing</h2>
+
+<form action="/listings" method="POST" novalidate class="needs-validation" enctype="multipart/form-data">
+
+    <!-- Title -->
+    <div class="row mb-3">
+        <div class="col-lg-8">
+            <label class="form-label">Place Name</label>
+            <input type="text" name="listing[title]" class="form-control" required>
+
+            <div class="valid-feedback">Looks good</div>
+            <div class="invalid-feedback">Please enter a place name</div>
+        </div>
+    </div>
+
+    <!-- Description -->
+    <div class="row mb-3">
+        <div class="col-lg-8">
+            <label class="form-label">Description</label>
+            <textarea name="listing[description]" class="form-control" rows="4" required></textarea>
+
+            <div class="valid-feedback">Nice description</div>
+            <div class="invalid-feedback">Description is required</div>
+        </div>
+    </div>
+
+    <!-- Image -->
+    <div class="row mb-3">
+        <div class="col-lg-8">
+            <label class="form-label">Upload Image</label>
+            <input type="file" name="listing[image]" class="form-control" >
+
+            <div class="valid-feedback">Valid URL</div>
+            <div class="invalid-feedback">Enter a valid URL</div>
+        </div>
+    </div>
+
+    <!-- Price -->
+    <div class="row mb-3">
+        <div class="col-lg-4">
+            <label class="form-label">Price</label>
+            <input type="number" name="listing[price]" class="form-control" >
+
+            <div class="valid-feedback">Valid price</div>
+            <div class="invalid-feedback">Price must be greater than 0</div>
+        </div>
+
+        <!-- Country -->
+        <div class="col-lg-4">
+            <label class="form-label">Country</label>
+            <input type="text" name="listing[country]" class="form-control" required>
+
+            <div class="valid-feedback">Looks good</div>
+            <div class="invalid-feedback">Country is required</div>
+        </div>
+    </div>
+
+    <!-- Location -->
+    <div class="row mb-4">
+        <div class="col-lg-4">
+            <label class="form-label">Location</label>
+            <input type="text" name="listing[location]" class="form-control" required>
+
+            <div class="valid-feedback">Looks good</div>
+            <div class="invalid-feedback">Location is required</div>
+        </div>
+    </div>
+
+    <button class="btn btn-danger">Add Listing</button>
+
+</form>
