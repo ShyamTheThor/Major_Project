@@ -30,7 +30,7 @@ StayEase provides a seamless platform where:
 * 📊 User Dashboard
 
 🌐 Live Demo:
-👉 https://major-project-v2s8.onrender.com
+👉 https://major-project-v2s8.onrender.com/listings
 
 ⚙️ Installation:<br/>
 1. git clone https://github.com/ShyamTheThor/Major_Project.git<br/>
