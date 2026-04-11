@@ -1,33 +1,25 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+const Listing = require("../models/listing");
+const User = require("../models/user");
+const data = require("./data");
 
-const initData = require('./data.js')
-const Listing = require('../models/listing.js')
+const dbUrl = "mongodb+srv://shyamthethor:shyam456@cluster0.cdtacdn.mongodb.net/rentify";
 
-main().then(()=>{
-    console.log("Connected to database")
-    
-}).catch((err)=>{
-    console.log(err);
-    
-})
+async function initDB() {
+  await mongoose.connect(dbUrl);
 
-async function main() {
-    
-    await mongoose.connect('mongodb://127.0.0.1:27017/wanderlust');
+  const user = await User.findOne({ username: "shyam" });
+
+  const newData = data.map(obj => ({
+    ...obj,
+    owner: user._id
+  }));
+
+  await Listing.deleteMany({});
+  await Listing.insertMany(newData);
+
+  console.log("Data initialized with owner");
+  process.exit();
 }
 
-
-const initDB = async()=>{
-    await Listing.deleteMany ({})
-    initData.data = initData.data.map((obj)=>({
-        ...obj,
-        owner:'69bc0933e4dbd7651e49f6d9',
-    }))
-    await Listing.insertMany (initData.data);
-    console.log("Data inserted succesfully");
-    
-}
-
-initDB()
-
-
+initDB();
