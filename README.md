@@ -1,4 +1,4 @@
-<h2>StayEase – Property Booking Platform</h2>
+<h2>Rentify – Property Booking Platform</h2>
 
 📌 Overview:
 A full-stack web application that allows users to list, browse, and book rental properties—similar to Airbnb.
